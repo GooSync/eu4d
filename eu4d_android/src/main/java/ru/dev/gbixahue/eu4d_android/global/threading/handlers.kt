@@ -8,24 +8,29 @@ import android.os.Looper
  * Created by Anton Zhilenkov on 20.08.18.
  */
 
-object Threading {
-  val uiHandler: Handler = Handler(Looper.getMainLooper())
-  val workHandler: Handler = Handler(HandlerThread("Application worker thread").apply { start() }.looper)
+class ThreadHandler {
+  val ui: Handler = Handler(Looper.getMainLooper())
+  val work: Handler = Handler(HandlerThread("Application worker thread").apply { start() }.looper)
 
   fun postInCurrentThread(msTime: Long, func: () -> Unit) {
     Handler().postDelayed({ func() }, msTime)
   }
 }
 
+internal class LazyInstance {
+  companion object {
+    val handler: ThreadHandler by lazy { ThreadHandler() }
+  }
+}
 
 fun post(msTime: Long, func: () -> Unit) {
-  Threading.postInCurrentThread(msTime, func)
+  LazyInstance.handler.postInCurrentThread(msTime, func)
 }
 
 fun postUI(msTime: Long = 0, func: () -> Unit) {
-  if (msTime > 0) Threading.uiHandler.postDelayed({ func() }, msTime) else Threading.uiHandler.post(func)
+  if (msTime > 0) LazyInstance.handler.ui.postDelayed({ func() }, msTime) else LazyInstance.handler.ui.post(func)
 }
 
 fun postWork(msTime: Long = 0, func: () -> Unit) {
-  if (msTime > 0) Threading.workHandler.postDelayed({ func() }, msTime) else Threading.workHandler.post(func)
+  if (msTime > 0) LazyInstance.handler.work.postDelayed({ func() }, msTime) else LazyInstance.handler.work.post(func)
 }
