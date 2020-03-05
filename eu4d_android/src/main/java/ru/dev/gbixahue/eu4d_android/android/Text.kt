@@ -20,7 +20,7 @@ fun String.insertAt(position: Int, sequence: String): String {
 
 fun String.appendBitmap(bitmap: Bitmap): Spannable {
   val stringValue = if (isEmpty()) " " else this
-  val starSpan = object : ImageSpan(bitmap, ImageSpan.ALIGN_BOTTOM) {
+  val starSpan = object: ImageSpan(bitmap, ImageSpan.ALIGN_BOTTOM) {
     override fun draw(canvas: Canvas, text: CharSequence, start: Int, end: Int, x: Float, top: Int, y: Int, bottom: Int, paint: Paint) {
       canvas.save()
       val paddingTop = bottom / 2 - drawable.minimumHeight / 2

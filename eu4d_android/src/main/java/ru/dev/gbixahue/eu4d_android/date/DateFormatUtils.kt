@@ -11,7 +11,7 @@ val simpleDateFormatMap = HashMap<String, ThreadLocal<SimpleDateFormat>>()
 private fun getFormatter(pattern: String, locale: Locale? = null): ThreadLocal<SimpleDateFormat> {
   var threadLocal: ThreadLocal<SimpleDateFormat>? = simpleDateFormatMap[pattern]
   if (threadLocal == null) {
-    threadLocal = object : ThreadLocal<SimpleDateFormat>() {
+    threadLocal = object: ThreadLocal<SimpleDateFormat>() {
       override fun initialValue(): SimpleDateFormat {
         return if (locale == null) SimpleDateFormat(pattern) else SimpleDateFormat(pattern, locale)
       }
@@ -26,7 +26,7 @@ fun releaseDateFormatters() {
 }
 
 fun convertDateToTimeWithGMToffset(stringDate: String, patternOfDate: String, offset: Long = getGMToffset(), locale: Locale? = null): Long {
-  val dateFormat = getFormatter(patternOfDate, locale).get() ?: return -1
+  val dateFormat = getFormatter(patternOfDate, locale).get() ?: return - 1
 
   val calendar = Calendar.getInstance()
   return try {
@@ -40,16 +40,16 @@ fun convertDateToTimeWithGMToffset(stringDate: String, patternOfDate: String, of
 }
 
 fun convertDateBetweenPatterns(
-  date: String,
-  patternOfDate: String,
-  toPattern: String,
-  default: String = date,
-  locale: Locale? = null
+    date: String,
+    patternOfDate: String,
+    toPattern: String,
+    default: String = date,
+    locale: Locale? = null
 ): String {
   return try {
     getFormatter(
-      toPattern,
-      locale
+        toPattern,
+        locale
     ).get()?.format(getFormatter(patternOfDate, locale).get()?.parse(date)) ?: default
   } catch (e: Exception) {
     return default
@@ -60,7 +60,7 @@ fun convertTimeToDate(time: Long, pattern: String, locale: Locale? = null): Stri
   return getFormatter(pattern, locale).get()?.format(time) ?: ""
 }
 
-fun convertDateToTime(stringDate: String, patternOfDate: String, default: Long = -1, locale: Locale? = null): Long {
+fun convertDateToTime(stringDate: String, patternOfDate: String, default: Long = - 1, locale: Locale? = null): Long {
   return try {
     getFormatter(patternOfDate, locale).get()?.parse(stringDate)?.time ?: default
   } catch (e: Exception) {

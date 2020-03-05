@@ -7,12 +7,12 @@ import androidx.viewpager.widget.ViewPager
  */
 
 fun ViewPager.addChangeListeners(
-  stateChanged: ((Int) -> Unit)? = null,
-  scrolled: ((Int, Float, Int) -> Unit)? = null,
-  selected: ((Int) -> Unit)? = null
+    stateChanged: ((Int) -> Unit)? = null,
+    scrolled: ((Int, Float, Int) -> Unit)? = null,
+    selected: ((Int) -> Unit)? = null
 ): ViewPager.OnPageChangeListener {
 
-  val listener = object : ViewPager.OnPageChangeListener {
+  val listener = object: ViewPager.OnPageChangeListener {
     override fun onPageScrollStateChanged(state: Int) {
       stateChanged?.invoke(state)
     }
@@ -30,7 +30,7 @@ fun ViewPager.addChangeListeners(
 }
 
 fun ViewPager.removeChangeListeners(
-  listener: ViewPager.OnPageChangeListener
+    listener: ViewPager.OnPageChangeListener
 ) {
   removeOnPageChangeListener(listener)
 }

@@ -21,7 +21,7 @@ fun Activity.safeStartActivity(intent: Intent, failureCallback: (() -> Unit)? = 
 fun Activity.closeKeyboard() {
   val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
   if (currentFocus != null) {
-    imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+    imm.hideSoftInputFromWindow(currentFocus !!.windowToken, 0)
   }
 }
 

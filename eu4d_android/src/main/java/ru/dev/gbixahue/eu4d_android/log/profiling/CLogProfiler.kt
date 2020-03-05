@@ -5,7 +5,7 @@ import ru.dev.gbixahue.eu4d_android.log.CLogger
 /**
  * Created by Anton Zhilenkov on 03.07.18.
  */
-class CLogProfiler : LogProfiler {
+class CLogProfiler: LogProfiler {
 
   private val builder: StringBuilder = StringBuilder()
   private val map = mutableMapOf<String, Long>()
@@ -27,11 +27,11 @@ class CLogProfiler : LogProfiler {
 
     val thread = Thread.currentThread()
     builder
-      .append("[").append(name).append("]:")
-      .append("[").append("${thread.name}-${thread.id}").append("]")
-      .append("[").append(storedTime).append("]")
-      .append("(").append(lastCallDiff).append(") - ")
-      .append(msg)
+        .append("[").append(name).append("]:")
+        .append("[").append("${thread.name}-${thread.id}").append("]")
+        .append("[").append(storedTime).append("]")
+        .append("(").append(lastCallDiff).append(") - ")
+        .append(msg)
     return builder.toString()
   }
 }

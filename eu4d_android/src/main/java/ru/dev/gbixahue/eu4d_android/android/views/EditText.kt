@@ -27,14 +27,14 @@ fun EditText.moveCursorTo(position: Int) {
 }
 
 fun EditText.focusAndMoveCursorToEnd() {
-  if (!isFocused) requestFocus()
+  if (! isFocused) requestFocus()
   if (text.isEmpty()) return
 
   moveCursorTo(text.length)
 }
 
 fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit): TextWatcher {
-  val watcher = object : TextWatcher {
+  val watcher = object: TextWatcher {
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
     override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 

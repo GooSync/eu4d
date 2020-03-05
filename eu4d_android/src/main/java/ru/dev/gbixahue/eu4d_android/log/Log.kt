@@ -1,7 +1,5 @@
 package ru.dev.gbixahue.eu4d_android.log
 
-import ru.dev.gbixahue.eu4d_kotlin.stringOf
-
 
 /**
  * Created by Anton Zhilenkov on 04.05.17.

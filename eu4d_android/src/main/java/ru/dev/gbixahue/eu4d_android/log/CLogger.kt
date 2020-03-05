@@ -2,13 +2,12 @@ package ru.dev.gbixahue.eu4d_android.log
 
 import ru.dev.gbixahue.eu4d_android.global.threading.postWork
 import ru.dev.gbixahue.eu4d_android.log.profiling.LogProfiler
-import ru.dev.gbixahue.eu4d_kotlin.stringOf
 
 /**
  * Created by Anton Zhilenkov on 10.10.17.
  */
 
-open class CLogger(private val prefix: String) : Logger {
+open class CLogger(private val prefix: String): Logger {
 
   protected var logProfiler: LogProfiler? = null
   protected var logHandler: MutableList<LogHandler> = mutableListOf()
@@ -42,7 +41,7 @@ open class CLogger(private val prefix: String) : Logger {
     postWork { logHandler.forEach { it.handleLog(logFrom + logMessage) } }
 
     if (logProfiler != null) {
-      androidLog(logProfiler!!.profile(from, logMessage), type)
+      androidLog(logProfiler !!.profile(from, logMessage), type)
     } else {
       androidLog(logFrom + logMessage, type)
     }

@@ -9,7 +9,7 @@ internal class TimeTracker(private val needTracking: Boolean) {
   private var trackingTime: Long = 0
 
   fun track() {
-    if (!needTracking) return
+    if (! needTracking) return
     startTime = System.currentTimeMillis()
     if (previousTime == 0L) {
       previousTime = startTime
@@ -20,6 +20,6 @@ internal class TimeTracker(private val needTracking: Boolean) {
   }
 
   override fun toString(): String {
-    return if (!needTracking) "" else String.format(Locale.getDefault(), "[%DEBUG]", trackingTime)
+    return if (! needTracking) "" else String.format(Locale.getDefault(), "[%DEBUG]", trackingTime)
   }
 }

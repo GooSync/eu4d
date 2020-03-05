@@ -46,14 +46,14 @@ fun View.enable(enable: Boolean) {
 
 fun View.show(show: Boolean) {
   if (show && visibility == View.VISIBLE) return
-  if (!show && visibility == View.GONE) return
+  if (! show && visibility == View.GONE) return
   visibility = if (show) View.VISIBLE else View.GONE
 }
 
-fun View.changeBackgrounColor(colorId: Int, prevColorForAnimationId: Int = -1, duration: Long = 300) {
+fun View.changeBackgrounColor(colorId: Int, prevColorForAnimationId: Int = - 1, duration: Long = 300) {
   val toColor = this.context.colorFrom(colorId)
   val fromColor = this.context.colorFrom(prevColorForAnimationId)
-  if (fromColor == -1) {
+  if (fromColor == - 1) {
     setBackgroundColor(toColor)
   } else {
     val animator = ValueAnimator()
@@ -67,7 +67,7 @@ fun View.changeBackgrounColor(colorId: Int, prevColorForAnimationId: Int = -1, d
   }
 }
 
-class InnerArbEvaluator : TypeEvaluator<Int> {
+class InnerArbEvaluator: TypeEvaluator<Int> {
 
   override fun evaluate(fraction: Float, startValue: Int, endValue: Int): Int {
     val startA = startValue shr 24 and 0xff

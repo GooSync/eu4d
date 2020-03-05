@@ -28,7 +28,7 @@ fun ViewGroup.toast(messageId: Int, length: Int = Toast.LENGTH_SHORT) {
 
 @Suppress("UNCHECKED_CAST")
 fun <T> ViewGroup.inflate(@LayoutRes resId: Int, attachToRoot: Boolean = false): T =
-  LayoutInflater.from(context).inflate(resId, this, attachToRoot) as T
+    LayoutInflater.from(context).inflate(resId, this, attachToRoot) as T
 
 fun ViewGroup.enableLayoutAnimation() {
   layoutTransition = LayoutTransition()
