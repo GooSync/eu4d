@@ -33,7 +33,7 @@ interface TypedHolder<T, K> {
   fun get(type: T): K?
 }
 
-class BaseTypedHolder<T, K> : TypedHolder<T, K> {
+class BaseTypedHolder<T, K>: TypedHolder<T, K> {
   private val holder = mutableMapOf<T, K>()
 
   override fun register(type: T, value: K) {
@@ -43,16 +43,14 @@ class BaseTypedHolder<T, K> : TypedHolder<T, K> {
   override fun get(type: T): K? = holder[type]
 }
 
-interface AtoB<A, B> {
-  fun invoke(from: A): B
+interface Converter<A, B> {
+  fun convert(from: A): B
 }
-
-interface Converter<A, B> : AtoB<A, B>
 
 interface IBuilder<A, B> {
   fun build(from: A): B
 }
 
-interface ModelBuilder<F, T> : IBuilder<F, T> {
+interface ModelBuilder<F, T>: IBuilder<F, T> {
   fun canBuild(from: F): Boolean
 }

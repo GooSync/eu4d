@@ -1,4 +1,4 @@
-package ru.dev.gbixahue.eu4d_kotlin.dart.utils
+package ru.dev.gbixahue.eu4d_kotlin.currency
 
 import ru.dev.gbixahue.eu4d_kotlin.common.Converter
 
@@ -6,7 +6,7 @@ import ru.dev.gbixahue.eu4d_kotlin.common.Converter
  * Created by Anton Zhilenkov on 04.03.2020.
  */
 class CurrencyCodeConverter: Converter<String, String> {
-  private val map = mutableMapOf<String, String>(
+  private val map = mutableMapOf(
       "AED" to "د.إ",
       "AFN" to "Af",
       "ALL" to "L",
@@ -159,7 +159,5 @@ class CurrencyCodeConverter: Converter<String, String> {
     map[code] = sign
   }
 
-  override fun invoke(from: String): String {
-    return map[from] ?: throw NoSuchElementException()
-  }
+  override fun convert(from: String): String = map[from] ?: throw NoSuchElementException()
 }

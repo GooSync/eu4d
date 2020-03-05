@@ -1,4 +1,4 @@
-package ru.dev.gbixahue.eu4d_kotlin
+package ru.dev.gbixahue.eu4d_kotlin.data_structure
 
 /**
  * Created by Anton Zhilenkov on 26.10.17.

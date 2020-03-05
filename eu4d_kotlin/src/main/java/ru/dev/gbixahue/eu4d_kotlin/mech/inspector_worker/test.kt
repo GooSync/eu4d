@@ -1,4 +1,4 @@
-package ru.dev.gbixahue.eu4d_kotlin.dart.inspector_worker
+package ru.dev.gbixahue.eu4d_kotlin.mech.inspector_worker
 
 import java.util.*
 
@@ -13,14 +13,14 @@ class InspectorTest {
     inspector.addWorker(worker)
     inspector.onWorkerDone = {}
     inspector.onDone = {}
-    inspector.onError = {type, data ->}
+    inspector.onError = { type, data -> }
     inspector.doWork()
   }
 }
 
-class DelayWorker : BaseWorker() {
+class DelayWorker: BaseWorker() {
   override fun doWork() {
-    Timer().schedule(object : TimerTask() {
+    Timer().schedule(object: TimerTask() {
       override fun run() {
         this@DelayWorker.done()
       }

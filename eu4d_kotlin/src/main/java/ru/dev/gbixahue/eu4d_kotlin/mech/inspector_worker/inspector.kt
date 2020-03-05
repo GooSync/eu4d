@@ -1,12 +1,11 @@
-package ru.dev.gbixahue.eu4d_kotlin.dart.inspector_worker
+package ru.dev.gbixahue.eu4d_kotlin.mech.inspector_worker
 
-import java.lang.Exception
 import java.util.*
 
 /**
  * Created by Anton Zhilenkov on 04.03.2020.
  */
-abstract class Inspector : Workable, ErrorCallbackHolder {
+abstract class Inspector: Workable, ErrorCallbackHolder {
   abstract fun addWorker(worker: Worker)
 
   abstract fun resume()
@@ -14,7 +13,7 @@ abstract class Inspector : Workable, ErrorCallbackHolder {
   abstract fun getWorkerCount(): Int
 }
 
-abstract class BaseInspector : Inspector() {
+abstract class BaseInspector: Inspector() {
   override var onError: OnWorkerError? = null
 
   var onDone: (() -> Unit)? = null
@@ -39,7 +38,7 @@ abstract class BaseInspector : Inspector() {
   override fun resume() {
     if (workerWithError == null) return
 
-    val worker = workerWithError!!
+    val worker = workerWithError !!
     workerWithError = null
     worker.doWork()
   }
@@ -56,13 +55,13 @@ abstract class BaseInspector : Inspector() {
   override fun getWorkerCount(): Int = workerList.size
 
   protected open fun notifyDoneWork() {
-    countOfDoneWorkers++
+    countOfDoneWorkers ++
     onWorkerDone?.invoke(countOfDoneWorkers)
   }
 
 }
 
-class SequenceInspector : BaseInspector() {
+class SequenceInspector: BaseInspector() {
   private val queue: Queue<Worker> = LinkedList()
 
   override fun doWork() {
@@ -84,7 +83,7 @@ class SequenceInspector : BaseInspector() {
 
     try {
       worker.doWork()
-    }catch (e: Exception){
+    } catch (e: Exception) {
       worker.onError?.invoke("Exception", e)
     }
   }

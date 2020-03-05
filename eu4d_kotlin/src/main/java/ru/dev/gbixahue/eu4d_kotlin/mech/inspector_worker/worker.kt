@@ -1,4 +1,4 @@
-package ru.dev.gbixahue.eu4d_kotlin.dart.inspector_worker
+package ru.dev.gbixahue.eu4d_kotlin.mech.inspector_worker
 
 /**
  * Created by Anton Zhilenkov on 04.03.2020.
@@ -17,12 +17,12 @@ interface Workable {
   fun done()
 }
 
-interface Worker : Workable, ErrorCallbackHolder {
+interface Worker: Workable, ErrorCallbackHolder {
   fun isReady(): Boolean
   fun setInspector(inspector: Inspector)
 }
 
-abstract class BaseWorker : Worker {
+abstract class BaseWorker: Worker {
   override var onError: OnWorkerError? = null
 
   private var workerIsDone: Boolean = false

@@ -11,7 +11,8 @@ fun stringOf(value: Any?, isNull: String = ""): String {
     is Map<*, *> -> stringOf(value as Map<Any, Any>, isNull = isNull)
     is Iterable<*> -> stringOf(value as Iterable<Any>, isNull = isNull)
     is Array<*> -> stringOf(value as Array<Any>, isNull = isNull)
-    is Throwable -> stringOf(value as Throwable)
+    is Throwable -> stringOf(value)
+    is Boolean -> stringOf(value)
     else -> value.toString()
   }
 }
@@ -31,7 +32,7 @@ fun stringOf(map: Map<Any, Any>, isEmpty: String = "{empty}", isNull: String = "
 }
 
 fun stringOf(value: Iterable<Any>, isEmpty: String = "[empty]", isNull: String = ""): String {
-  if (!value.iterator().hasNext()) return isEmpty
+  if (! value.iterator().hasNext()) return isEmpty
 
   val builder = StringBuilder("[")
   value.forEach { builder.append(stringOf(it, isNull)).append(", ") }
@@ -59,9 +60,3 @@ fun stringOf(value: Throwable): String {
 }
 
 fun stringOf(value: Boolean): String = if (value) "true" else "false"
-
-fun booleanOf(value: Any?): Boolean {
-  if (value == null) return false
-  if (value is Boolean) return value
-  return true
-}
