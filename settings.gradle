@@ -1,4 +1,4 @@
-rootProject.name='eu4d'
+rootProject.name = 'eu4d'
 include ':app'
 include ':eu4d_android'
 include ':eu4d_kotlin'
