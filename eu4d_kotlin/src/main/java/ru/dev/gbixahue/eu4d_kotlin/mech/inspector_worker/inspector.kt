@@ -5,24 +5,24 @@ import java.util.*
 /**
  * Created by Anton Zhilenkov on 04.03.2020.
  */
-abstract class Inspector: Workable, ErrorCallbackHolder {
-  abstract fun addWorker(worker: Worker)
+interface Inspector: Workable, ErrorCallbackHolder {
+  fun addWorker(worker: Worker)
 
-  abstract fun resume()
+  fun resume()
 
-  abstract fun getWorkerCount(): Int
+  fun getWorkerCount(): Int
 }
 
-abstract class BaseInspector: Inspector() {
+abstract class BaseInspector: Inspector {
   override var onError: OnWorkerError? = null
 
   var onDone: (() -> Unit)? = null
   var onWorkerDone: ((Any) -> Unit)? = null
 
   protected val workerList = mutableListOf<Worker>()
+  protected var countOfDoneWorkers = 0
+  protected var workerWithError: Worker? = null
 
-  private var workerWithError: Worker? = null
-  private var countOfDoneWorkers = 0
   private var hasError = false
 
   override fun addWorker(worker: Worker) {
@@ -40,6 +40,7 @@ abstract class BaseInspector: Inspector() {
 
     val worker = workerWithError !!
     workerWithError = null
+    hasError = false
     worker.doWork()
   }
 
