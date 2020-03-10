@@ -2,6 +2,7 @@ package ru.dev.gbixahue.eu4d_android.log
 
 import ru.dev.gbixahue.eu4d_android.global.threading.postWork
 import ru.dev.gbixahue.eu4d_android.log.profiling.LogProfiler
+import ru.dev.gbixahue.eu4d_kotlin.stringOf
 
 /**
  * Created by Anton Zhilenkov on 10.10.17.
