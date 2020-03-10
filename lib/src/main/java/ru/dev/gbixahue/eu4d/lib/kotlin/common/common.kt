@@ -54,3 +54,11 @@ interface IBuilder<A, B> {
 interface ModelBuilder<F, T>: IBuilder<F, T> {
   fun canBuild(from: F): Boolean
 }
+
+interface DataBinder<D> {
+  fun bindData(data: D)
+}
+
+interface LayoutHolder {
+  fun getLayoutId(): Int
+}
