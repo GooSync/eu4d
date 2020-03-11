@@ -46,7 +46,7 @@ abstract class RvBaseAdapter<V: RvBaseVH<D>, D>: RecyclerView.Adapter<V>() {
 
 
 abstract class RvAdapter<V: RvVH<D>, D: Any>(
-  protected val callback: RvCallback<D>? = null
+  private val callback: RvCallback<D>? = null
 ): RvBaseAdapter<V, D>(), LayoutHolder {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): V {
