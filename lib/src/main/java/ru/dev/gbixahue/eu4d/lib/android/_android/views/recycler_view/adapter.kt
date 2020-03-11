@@ -54,5 +54,5 @@ abstract class RvAdapter<V: RvVH<D>, D: Any>(
     return createViewHolder(view, callback)
   }
 
-  abstract fun createViewHolder(view: View, listener: ((Int, Int, D) -> Unit)? = null): V
+  abstract fun createViewHolder(view: View, listener: RvCallback<D>? = null): V
 }
