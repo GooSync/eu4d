@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ru.dev.gbixahue.eu4d.lib.android.OnBackPressHandler
-import ru.dev.gbixahue.eu4d.lib.android._android.views.weakReference
 import ru.dev.gbixahue.eu4d.lib.arch.mvp.presenter.MvpPresenter
 
 /**

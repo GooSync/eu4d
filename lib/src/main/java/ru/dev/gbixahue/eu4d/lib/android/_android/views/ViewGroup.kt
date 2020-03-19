@@ -2,6 +2,7 @@ package ru.dev.gbixahue.eu4d.lib.android._android.views
 
 import android.animation.LayoutTransition
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.*
@@ -13,7 +14,7 @@ import ru.dev.gbixahue.eu4d.lib.android._android.components.*
 fun <T> ViewGroup.inflate(@LayoutRes resId: Int, attach: Boolean = false): T =
     LayoutInflater.from(context).inflate(resId, this, attach) as T
 
-inline fun <reified T> ViewGroup.find(@IdRes viewId: Int): T = findViewById(viewId)!!
+inline fun <reified T: View> ViewGroup.find(@IdRes viewId: Int): T = findViewById(viewId)!!
 
 fun ViewGroup.enableLayoutAnimation() {
   layoutTransition = LayoutTransition()
