@@ -1,8 +1,13 @@
 package ru.dev.gbixahue.eu4d.lib.kotlin.common
 
+import java.lang.ref.WeakReference
+
 /**
  * Created by Anton Zhilenkov on 04.03.2020.
  */
+
+inline fun <reified T> T.weakReference(): WeakReference<T> = WeakReference<T>(this)
+
 interface Typed<T> {
   fun getType(): T
 }
