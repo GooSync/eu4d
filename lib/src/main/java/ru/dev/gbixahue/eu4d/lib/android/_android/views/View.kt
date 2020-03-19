@@ -18,6 +18,8 @@ fun <T>View.inflate(@LayoutRes layoutId: Int, root: ViewGroup? = null, attach: B
   return LayoutInflater.from(context).inflate(layoutId, root, attach) as T
 }
 
+inline fun <reified T: View> ViewGroup.find(@IdRes viewId: Int): T = findViewById(viewId)!!
+
 fun View.toast(message: String, length: Int = Toast.LENGTH_SHORT) {
   context.toast(message, length)
 }
