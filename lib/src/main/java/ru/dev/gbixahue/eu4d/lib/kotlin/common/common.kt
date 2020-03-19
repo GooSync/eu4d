@@ -38,7 +38,7 @@ interface TypedHolder<T, K> {
   fun get(type: T): K?
 }
 
-class BaseTypedHolder<T, K>: TypedHolder<T, K> {
+open class BaseTypedHolder<T, K>: TypedHolder<T, K> {
   private val holder = mutableMapOf<T, K>()
 
   override fun register(type: T, value: K) {
