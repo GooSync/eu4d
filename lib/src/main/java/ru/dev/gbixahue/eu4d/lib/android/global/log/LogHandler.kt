@@ -12,7 +12,7 @@ interface TypedLogHandler: LogHandler {
   fun getType(): LogType
 }
 
-class MultiLogHandler(
+open class MultiLogHandler(
     private val handledTypes: MutableList<TypedLogHandler>
 ): LogHandler {
 
