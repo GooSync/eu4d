@@ -10,10 +10,10 @@ import android.os.Looper
 
 class ThreadHandler {
   val ui: Handler = Handler(Looper.getMainLooper())
-  val work: Handler = Handler(HandlerThread("Application worker thread").apply { start() }.looper)
+  val background: Handler = Handler(HandlerThread("Application worker thread").apply { start() }.looper)
 
   fun postInCurrentThread(msTime: Long, func: () -> Unit) {
-    Handler().postDelayed({ func() }, msTime)
+    post(Handler(), msTime, func)
   }
 }
 
@@ -28,9 +28,16 @@ fun post(msTime: Long, func: () -> Unit) {
 }
 
 fun postUI(msTime: Long = 0, func: () -> Unit) {
-  if (msTime > 0) LazyInstance.handler.ui.postDelayed({ func() }, msTime) else LazyInstance.handler.ui.post(func)
+  post(LazyInstance.handler.ui, msTime, func)
 }
 
 fun postWork(msTime: Long = 0, func: () -> Unit) {
-  if (msTime > 0) LazyInstance.handler.work.postDelayed({ func() }, msTime) else LazyInstance.handler.work.post(func)
+  post(LazyInstance.handler.background, msTime, func)
+}
+
+internal fun post(handler: Handler, msTime: Long, func: () -> Unit) {
+  when {
+    msTime <= 0 -> handler.post { func() }
+    msTime > 0 -> handler.postDelayed({ func() }, msTime)
+  }
 }
