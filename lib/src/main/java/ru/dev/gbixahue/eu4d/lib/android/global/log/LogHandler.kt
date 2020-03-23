@@ -5,5 +5,18 @@ package ru.dev.gbixahue.eu4d.lib.android.global.log
  */
 
 interface LogHandler {
-  fun handleLog(logMessage: String)
+  fun handleLog(logMessage: String, type: LogType)
+}
+
+interface TypedLogHandler: LogHandler {
+  fun getType(): LogType
+}
+
+class MultiLogHandler(
+    private val handledTypes: MutableList<TypedLogHandler>
+): LogHandler {
+
+  override fun handleLog(logMessage: String, type: LogType) {
+    handledTypes.filter { it.getType() == type }.forEach { it.handleLog(logMessage, type) }
+  }
 }

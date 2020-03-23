@@ -1,11 +1,11 @@
 package ru.dev.gbixahue.eu4d.lib.android.global.log.profiling
 
-import ru.dev.gbixahue.eu4d.lib.android.global.log.CLogger
+import ru.dev.gbixahue.eu4d.lib.android.global.log.TagLogger
 
 /**
  * Created by Anton Zhilenkov on 03.07.18.
  */
-class CLogProfiler: LogProfiler {
+class SimpleLogProfiler: LogProfiler {
 
   private val builder: StringBuilder = StringBuilder()
   private val map = mutableMapOf<String, Long>()
@@ -13,7 +13,7 @@ class CLogProfiler: LogProfiler {
   private var lastLogCall = System.currentTimeMillis()
 
   override fun profile(from: Any, msg: String): String {
-    return logAndPut(CLogger.getTag(from), msg, System.currentTimeMillis())
+    return logAndPut(TagLogger.getTag(from), msg, System.currentTimeMillis())
   }
 
   private fun logAndPut(name: String, msg: String, time: Long): String {

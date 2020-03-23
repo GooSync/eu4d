@@ -9,8 +9,10 @@ import ru.dev.gbixahue.eu4d.lib.android.global.log.profiling.LogProfiler
 interface Logger {
 
   fun d(from: Any, msg: String, value: Any?)
+  fun i(from: Any, msg: String, value: Any?)
   fun w(from: Any, msg: String, value: Any?)
   fun e(from: Any, msg: String, value: Any?)
   fun setProfiler(profiler: LogProfiler?)
-  fun addHandler(handler: LogHandler?)
+  fun addHandler(handler: TypedLogHandler)
+  fun removeHandler(handler: TypedLogHandler)
 }
