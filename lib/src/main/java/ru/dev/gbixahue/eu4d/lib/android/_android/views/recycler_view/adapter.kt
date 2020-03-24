@@ -37,10 +37,6 @@ abstract class RvBaseAdapter<V: RvBaseVH<D>, D>: RecyclerView.Adapter<V>() {
   }
 
   override fun getItemCount(): Int = itemList.size
-
-  override fun onBindViewHolder(holder: V, position: Int) {
-    holder.bindData(itemList[position])
-  }
 }
 
 
@@ -55,4 +51,8 @@ abstract class RvAdapter<V: RvVH<D>, D: Any>(
   }
 
   abstract fun createViewHolder(view: View, listener: RvCallback<D>? = null): V
+
+  override fun onBindViewHolder(holder: V, position: Int) {
+    holder.bindData(itemList[position])
+  }
 }
