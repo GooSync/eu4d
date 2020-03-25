@@ -7,9 +7,7 @@ import ru.dev.gbixahue.eu4d.lib.kotlin.common.DataBinder
 /**
  * Created by Anton Zhilenkov on 17.11.17.
  */
-abstract class RvBaseVH<D>(itemView: View): RecyclerView.ViewHolder(itemView), DataBinder<D> {
-  abstract fun onDataBound(data: D)
-}
+abstract class RvBaseVH<D>(itemView: View): RecyclerView.ViewHolder(itemView), DataBinder<D>
 
 
 
@@ -19,6 +17,8 @@ abstract class RvVH<D: Any>(
 ): RvBaseVH<D>(itemView) {
 
   protected lateinit var itemData: D
+
+  abstract fun onDataBound(data: D)
 
   override fun bindData(data: D) {
     itemData = data
