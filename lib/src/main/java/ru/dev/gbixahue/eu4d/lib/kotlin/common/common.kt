@@ -36,9 +36,13 @@ interface TypedHolder<T, K> {
   fun register(type: T, value: K)
 
   fun get(type: T): K?
+  fun require(type: T): K
+
+  fun clear()
 }
 
 open class BaseTypedHolder<T, K>: TypedHolder<T, K> {
+
   private val holder = mutableMapOf<T, K>()
 
   override fun register(type: T, value: K) {
@@ -46,6 +50,12 @@ open class BaseTypedHolder<T, K>: TypedHolder<T, K> {
   }
 
   override fun get(type: T): K? = holder[type]
+
+  override fun require(type: T): K = get(type) !!
+
+  override fun clear() {
+    holder.clear()
+  }
 }
 
 interface Converter<A, B> {
