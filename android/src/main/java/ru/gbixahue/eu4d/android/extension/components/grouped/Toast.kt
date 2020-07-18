@@ -3,7 +3,6 @@ package ru.gbixahue.eu4d.android.extension.components.grouped
 import android.content.Context
 import android.view.View
 import android.widget.Toast
-import ru.gbixahue.eu4d.android.extension.components.stringFrom
 
 /**
  * Created by Anton Zhilenkov on 18/07/2020.
