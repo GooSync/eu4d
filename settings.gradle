@@ -1,3 +1,4 @@
 rootProject.name = 'eu4d'
+include ':android'
+include ':core'
 include ':app'
-include ':lib'
