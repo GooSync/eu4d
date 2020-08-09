@@ -1,6 +1,9 @@
-package ru.gbixahue.eu4d.core.log
+package ru.gbixahue.eu4d.android.log
 
 import ru.gbixahue.eu4d.core.global.function.stringOf
+import ru.gbixahue.eu4d.core.log.LogType
+import ru.gbixahue.eu4d.core.log.Logger
+import ru.gbixahue.eu4d.core.log.TypedLogHandler
 import ru.gbixahue.eu4d.core.log.profiling.LogProfiler
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -75,10 +78,10 @@ open class TagLogger(
 
   private fun androidLog(message: String, type: LogType) {
     when (type) {
-      LogType.DEBUG -> Log.d(tag, message)
-      LogType.WARNING -> Log.w(tag, message)
-      LogType.ERROR -> Log.e(tag, message)
-      LogType.INFO -> Log.i(tag, message)
+      LogType.DEBUG -> android.util.Log.d(tag, message)
+      LogType.WARNING -> android.util.Log.w(tag, message)
+      LogType.ERROR -> android.util.Log.e(tag, message)
+      LogType.INFO -> android.util.Log.i(tag, message)
     }
   }
 

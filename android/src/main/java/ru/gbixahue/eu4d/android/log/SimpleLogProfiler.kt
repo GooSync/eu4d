@@ -1,6 +1,7 @@
-package ru.gbixahue.eu4d.core.log.profiling
+package ru.gbixahue.eu4d.android.log
 
-import ru.gbixahue.eu4d.core.log.TagLogger
+import ru.gbixahue.eu4d.core.log.profiling.LogProfiler
+
 
 /**
  * Created by Anton Zhilenkov on 03.07.18.
