@@ -1,4 +1,4 @@
-package ru.gbixahue.eu4d.android.textTransformer.chain
+package ru.gbixahue.eu4d.android.text.transformer.chain
 
 import android.text.style.ForegroundColorSpan
 import androidx.annotation.ColorInt

@@ -1,4 +1,4 @@
-package ru.gbixahue.eu4d.android.textTransformer.chain
+package ru.gbixahue.eu4d.android.text.transformer.chain
 
 import android.text.SpannableStringBuilder
 import ru.gbixahue.eu4d.core.converter.text.transformer.chain.ChainDecorator

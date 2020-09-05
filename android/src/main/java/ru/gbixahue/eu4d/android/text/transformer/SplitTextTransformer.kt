@@ -1,4 +1,4 @@
-package ru.gbixahue.eu4d.android.textTransformer
+package ru.gbixahue.eu4d.android.text.transformer
 
 import android.text.SpannableStringBuilder
 import ru.gbixahue.eu4d.core.converter.text.transformer.Transformer
